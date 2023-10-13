@@ -1,0 +1,27 @@
+public boolean isStrictlyPalindromic(int n) {
+    if (n < 4) {
+        return false; // Numbers less than 4 can't be strictly palindromic.
+    }
+    
+    for (int base = 2; base <= n - 2; base++) {
+        String numInBase = Integer.toString(n, base);
+        if (!isPalindromic(numInBase)) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+private boolean isPalindromic(String s) {
+    int left = 0;
+    int right = s.length() - 1;
+    while (left < right) {
+        if (s.charAt(left) != s.charAt(right)) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+    return true;
+}
